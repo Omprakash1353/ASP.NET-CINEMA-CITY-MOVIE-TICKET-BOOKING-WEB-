@@ -1,0 +1,286 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Movie_Ticket_Web.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">    
+    <link rel="preconnect" href="https://fonts.googleapis.com" / >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin / >
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=Kaushan+Script&family=Poppins&display=swap" rel="stylesheet"/ >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/ >
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .leftnav,
+        .rightnav {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+            .leftnav a,
+            .rightnav a {
+                text-decoration: none;
+                color: #999;
+            }
+
+        .leftnav {
+            padding-left: 10px;
+        }
+
+        .rightnav {
+            padding-right: 10px;
+        }
+
+        .leftnav img {
+            width: 150px;
+        }
+
+        .leftnav li,
+        .rightnav li {
+            padding: 3px 15px;
+        }
+
+        .leftnav a:hover,
+        .rightnav a:hover {
+            color: #fff;
+        }
+
+        header .hov::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #fff;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        header .hov:hover::after {
+            width: 100%;
+        }
+        footer {
+    background-color: #000;
+    color: #fff;
+}
+
+    footer a {
+        text-decoration: none;
+        transition: .5s;
+        color: #fff;
+    }
+
+    footer li {
+        list-style: none;
+    }
+
+    footer .footer_info {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        padding: 0 50px;
+        padding: 40px;
+    }
+
+.footer_info .footer_width {
+    padding: 0 15px;
+}
+
+.footer_info h2 {
+    margin-bottom: 20px;
+}
+
+.about, .contact {
+    width: 40%;
+}
+
+.link {
+    width: 20%;
+}
+
+    .link a {
+        color: #999;
+    }
+
+.social-media {
+    margin-top: 30px;
+}
+
+    .social-media ul {
+        display: flex;
+    }
+
+        .social-media ul li a {
+            display: inline-block;
+            margin-right: 50px;
+            height: 50px;
+            width: 50px;
+            padding-top: 12px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            text-align: center;
+        }
+
+            .social-media ul li a:hover {
+                background-color: #fff;
+                color: #000;
+            }
+
+.link ul li a {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+    .link ul li a:hover {
+        color: #fff;
+    }
+
+.contact ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    .contact ul li span {
+        margin-right: 15px;
+    }
+
+.copy-right {
+    padding: 15px 0;
+    text-align: center;
+    background-color: #000;
+    border-top: 1px solid #fff;
+}
+      .rightnav .profile-master-icon{
+        width: 30px;
+        height: 30px;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 50%;
+        font-size: 30px;
+        font-weight: 900;
+      }
+      .rightnav .profile-master-icon:hover{
+        background: #000;
+        color: #fff;
+        transition: .5s linear;
+      }
+
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+      <ul class="leftnav">
+        <li>
+          <a href="homepage.aspx"><img src="Images/CinemaCity.png" alt="" /></a>
+        </li>
+        <li><a class="hov" href="homepage.aspx">HOME</a></li>
+        <li><a class="hov" href="Movies.aspx">MOVIE</a></li>
+        <li><a class="hov" href="MyTickets.aspx">MY TICKETS</a></li>
+          <li><a class="hov" href="About.aspx">ABOUT</a></li>
+      </ul>
+      <ul class="rightnav">
+        <li>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" Visible="false">
+                <asp:Label ID="Label100" runat="server" CssClass="profile-master-icon" Text=""></asp:Label>
+            </asp:LinkButton>
+        </li>
+        <li>
+            <asp:LinkButton class="hov" ID="LinkButton2" runat="server" OnClick="LinkButton2_Click">LOGIN</asp:LinkButton>
+        </li>
+        <li>
+            <asp:LinkButton class="hov" ID="LinkButton3" runat="server" OnClick="LinkButton3_Click">REGISTER</asp:LinkButton>
+        </li>
+        <li>
+            <asp:LinkButton class="hov" ID="LinkButton4" Visible="false" runat="server" OnClick="LinkButton4_Click">LOGOUT</asp:LinkButton>
+        </li>
+      </ul>
+    </header>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    <footer>
+      <div class="footer_info">
+        <div class="footer-width about">
+          <h2>About</h2>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus
+            obcaecati sapiente cum aliquid. Atque praesentium excepturi illum
+            neque enim veritatis.
+          </p>
+          <div class="social-media">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-width link">
+          <h2>Quick links</h2>
+          <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">MOVIES</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="footer-width contact">
+          <h2>Contact</h2>
+          <ul>
+            <li>
+              <span><i class="fas fa-map-marker-alt"></i></span>
+              <p>8368 Mayflower Ave. Winder, GA 30680, Street No. 3A, Mumbai</p>
+            </li>
+            <li>
+              <span><i class="fas fa-envelope"></i></span>
+              <a href="#">CinemaCity@gmail.com</a>
+            </li>
+            <li>
+              <span><i class="fas fa-phone-volume"></i></span>
+              <a href="#">90000 90000</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copy-right">
+        <p>&copy COPYRIGHT - ALL RIGHTS RESERVED</p>
+      </div>
+    </footer>
+
+    </form>
+</body>
+</html>
